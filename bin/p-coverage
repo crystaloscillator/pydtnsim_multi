@@ -1,0 +1,3 @@
+#!/bin/sh
+
+./pydtnsim -M Log -n 10 | grep status | cut -f 1,7
