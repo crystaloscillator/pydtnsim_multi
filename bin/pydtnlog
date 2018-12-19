@@ -1,2 +1,2 @@
 #!/bin/sh
-./pydtnsim -M Log -n $1
+pydtnsim -M Log -n $1
