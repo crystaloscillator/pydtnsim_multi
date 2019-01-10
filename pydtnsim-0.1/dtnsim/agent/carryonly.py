@@ -13,7 +13,7 @@ import math
 from perl import die, warn, getopts
 import tbdump
 
-MAX_RANGE = 50
+MAX_RANGE = 500
 
 class CarryOnly():
     def __init__(self,
