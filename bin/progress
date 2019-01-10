@@ -1,32 +1,35 @@
 #!/usr/bin/env python3
 
 import fileinput
-from argparse import ArgumentParser
 import sys
+import time
+from progressbar import ProgressBar, Percentage, Bar
+from argparse import ArgumentParser
+
 
 def get_option():
     parser = ArgumentParser()
     parser.add_argument('files', metavar='FILE', nargs='*')
     parser.add_argument('-n', '--node', type=int)
-    parser.add_argument('-p', '--percent', type=int)
     return parser.parse_args()
-
 
 def main():
     args = get_option()
     n_nodes = args.node
-    p_target = args.percent / 100
     received_agent = {1}
+    p = ProgressBar(0, 100, widgets=[Percentage(), Bar()])
     for line in fileinput.input(files=args.files):
         log = line.split()
-        time = log[0]
+        time_ = log[0]
         type_ = log[1]
         if type_ == "forward":
             received_agent.add(int(log[3]))
             p_coverage = len(received_agent) / n_nodes
-            if p_coverage >= p_target:
-                print(time)
-                break
+            # p.update(int(p_coverage * 100))
+            if p_coverage >= 1:
+                time.sleep(1)
+                sys.exit(0)
 
-if __name__== "__main__":
+
+if __name__ == "__main__":
     main()

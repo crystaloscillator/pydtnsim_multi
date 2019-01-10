@@ -1,3 +1,0 @@
-#!/bin/sh
-grep forward | cut -f 6 |
-grep -v -e dup -e delivered | wc
