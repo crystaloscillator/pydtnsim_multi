@@ -6,6 +6,19 @@ import time
 from progressbar import ProgressBar
 from argparse import ArgumentParser
 
+class Process:
+    def __init__(self):
+        self.p_coverage = 0
+        self.time = 0
+        self.received_agent = {1}
+
+    def update(self, received_agent):
+        self.received_agent.add(agent)
+
+    def get_size_of_received_agent(self):
+        return len(self.received_agent)
+
+
 
 def get_option():
     parser = ArgumentParser()
